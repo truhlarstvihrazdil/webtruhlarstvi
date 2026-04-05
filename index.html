@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truhlářství Hrazdil</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f6f1;
+      color: #3b2f2f;
+      line-height: 1.6;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      text-align: center;
+      background: linear-gradient(to right, #f9f6f1, #f2ece4);
+    }
+    .hero h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #2a1f1c;
+    }
+    .hero p {
+      font-size: 20px;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      background-color: #2a1f1c;
+      color: #fff;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #b87333;
+    }
+    section {
+      padding: 100px 20px 60px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #2a1f1c;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+    .about-grid div {
+      font-size: 16px;
+    }
+    .about-grid h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #2a1f1c;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+    .service {
+      padding: 30px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .service:hover {
+      background-color: #e8dfd3;
+    }
+    .masiv {
+      background: url('wood.jpg') center/cover no-repeat;
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+      background-blend-mode: multiply;
+      background-color: rgba(58, 44, 30, 0.85);
+    }
+    .masiv h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .masiv p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    form {
+      display: grid;
+      gap: 15px;
+    }
+    input, textarea, select {
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      background-color: #fff;
+      color: #3b2f2f;
+    }
+    button {
+      background-color: #2a1f1c;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #b87333;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f2ece4;
+      font-size: 14px;
+      color: #3b2f2f;
+    }
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h2 {
+        font-size: 36px;
+      }
+    }.btn-zjistit {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #a0522d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-zjistit:hover {
+  background-color: #7a3e1f;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  #onas {
+    padding: 60px 15px;
+  }
+
+  #onas h2 {
+    font-size: 28px;
+  }
+
+  #onas p {
+    font-size: 16px;
+  }
+}
+
+</style>
+</head>
+<script>
+  window.addEventListener('load', () => {
+    const hash = window.location.hash;
+    if (hash === '#sluzby') {
+      const target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+</script>
+
+<body>
+<div id="top"></div>
+
+<header>
+  <div class="header-row">
+    <a href="#top" class="logo">
+  <img src="logo-hrazdil.svg" alt="Logo" />
+</a>
+
+
+    <div class="social">
+  <a href="https://www.facebook.com/profile.php?id=61576413437263" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/truhlarstvihrazdil/" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li><a href="#onas">O nás</a></li>
+        <li><a href="#masiv">Masiv</a></li>
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+<section id="hero">
+  <div class="hero-overlay">
+    <h1>Vyrábíme nábytek s duší</h1>
+    <p>Poctivá práce, kvalitní materiály a osobní přístup</p>
+    <a href="#onas" class="btn">Zjistit více</a>
+  </div>
+</section>
+
+  <section id="onas">
+  <div class="onas-overlay">
+    <h2>O nás</h2>
+    <p>
+      Děláme nábytek pro lidi. Tak, aby byl funkční, krásný a vydržel roky. Věříme, že poctivá práce a smysl pro detail mají stále své místo.
+    </p>
+    <p>
+      Jsme malá rodinná firma — otec a syn. Firmu založil můj táta, zkušený truhlář, který se celý život věnoval práci se dřevem. Po několikaleté pauze jsme se rozhodli dílnu znovu otevřít a navázat na řemeslnou tradici, kterou chci dále rozvíjet.
+    </p>
+    <p>
+      
+Věnujeme se veškerým truhlářským pracím, využíváme kvalitní <b>laminované desky</b>, ale srdcem naší výroby je <b>masivní dřevo</b>.
+
+
+ Právě v něm vidíme krásu, trvanlivost a charakter, který žádný jiný materiál nenahradí.
+    </p>
+    <p>
+      V dílně se doplňujeme —  každou zakázku řešíme společně, do posledního detailu. Vždy přemýšlíme nad tím, jak věci udělat chytře tak, aby dobře sloužily a zapadaly do každodenního života našich zákazníků.
+    </p>
+    <p>
+      Dřevo nás baví.Ještě víc nás těší, když naše práce dává smysl i Vám.
+    </p>
+    
+
+  </div>
+</section>
+
+
+
+<section id="masiv">
+  <div class="masiv-overlay">
+    <h2>Masivní dřevo</h2>
+    <p>
+      Masiv je srdcem naší práce. Každý kus dřeva má svou jedinečnou kresbu, vůni i charakter.
+      Pracujeme s dubem, bukem, smrkem i dalšími dřevinami — vždy s respektem k přírodě a řemeslu.
+    </p>
+    <p>
+      Masivní nábytek je nadčasový, pevný a krásně stárne. Vyrábíme z něj stoly, postele, schodiště, obklady i další prvky interiéru.
+    </p>
+    <p>
+      Věříme, že poctivé dřevo má duši. Právě tu se snažíme v každém výrobku zachovat.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- STYLY -->
+<style>
+  .sluzba-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .sluzba-img:hover {
+    transform: scale(1.03);
+  }
+
+  .sluzba-box {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease-out;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  .sluzba-box.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .sluzba-text {
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .sluzba-text:hover h3 {
+    color: #a0522d;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+
+  .sluzba-text:hover p {
+    color: #555;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+</style>
+
+<!-- SEKCE SLUŽEB -->
+<section id="sluzby" style="padding: 100px 20px; max-width: 1200px; margin: auto;">
+  <h2 style="text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 36px; margin-bottom: 60px; color: #2a1f1c;">Naše služby</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+
+    <div class="sluzba-box">
+      <img src="kuchyne.png" alt="Vestavěné skříně" class="sluzba-img">
+      <div class="sluzba-text">
+        <h3>Kuchyně na míru</h3>
+        <p>Moderní i rustikální kuchyně přesně podle vašich představ.</p>
+        <a href="galerie.html" class="btn-zjistit">Galerie</a>
+      </div>
+    </div>
+
+    <div class="sluzba-box">
+      <img src="vestavena skrin.png" alt="Vestavěné skříně" class="sluzba-img">
+      <div class="sluzba-text">
+        <h3>Vestavěné skříně</h3>
+        <p>Úložné prostory na míru s maximálním využitím prostoru.</p>
+        <a href="galerie.html" class="btn-zjistit">Galerie</a>
+      </div>
+    </div>
+
+    <div class="sluzba-box">
+      <img src="nabytek na miru.png" alt="Nábytek na míru" class="sluzba-img">
+      <div class="sluzba-text">
+        <h3>Nábytek na míru</h3>
+        <p>Designový nábytek podle vašich potřeb a prostoru.</p>
+        <a href="galerie.html" class="btn-zjistit">Galerie</a>
+      </div>
+    </div>
+
+    <div class="sluzba-box">
+      <img src="terasy a pergoly.png" alt="Terasy a pergoly" class="sluzba-img">
+      <div class="sluzba-text">
+        <h3>Terasy a pergoly</h3>
+        <p>Dřevěné terasy a pergoly, které propojí váš domov se zahradou.</p>
+        <a href="galerie.html" class="btn-zjistit">Galerie</a>
+      </div>
+    </div>
+
+    <div class="sluzba-box">
+      <img src="domky.png" alt="Přístřešky a domky" class="sluzba-img">
+      <div class="sluzba-text">
+        <h3>Přístřešky a domky</h3>
+        <p>Praktické dřevěné stavby na míru – od přístřešků po zahradní domky.</p>
+        <a href="galerie.html" class="btn-zjistit">Galerie</a>
+      </div>
+    </div>
+
+    <div class="sluzba-box">
+      <img src="renovace a opravy.png" alt="Renovace a opravy" class="sluzba-img">
+      <div class="sluzba-text">
+        <h3>Renovace a opravy</h3>
+        <p>Opravy, úpravy a renovace nábytku, dveří, schodů a dalších dřevěných prvků.</p>
+        <a href="galerie.html" class="btn-zjistit">Galerie</a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ANIMACE PŘI SCROLLOVÁNÍ -->
+<script>
+  const boxes = document.querySelectorAll('.sluzba-box');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 150); // zpoždění mezi boxy
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  boxes.forEach(box => observer.observe(box));
+</script>
+
+
+
+
+ <section id="kontakt">
+  <div class="kontakt-container">
+    <div class="kontakt-info">
+      <h2>Kontakt</h2>
+      <ul>
+        <li><strong>Adresa:</strong> Otice, Domky 374, 747 81</li>
+        <li><strong>Telefon:</strong> <a href="tel:+607 318 095">+420 607 318 095</a></li>
+        <li><strong>E-mail:</strong> <a>truhlarstvihrazdil@seznam.cz</a></li>
+      </ul>
+
+      <div class="oteviraci-doba">
+        <h3>Otevírací doba</h3>
+        <ul>
+          <li>Pondělí–Pátek: 8:00 – 18:00</li>
+          <li>Sobota: dle domluvy</li>
+          <li>Neděle: zavřeno</li>
+        </ul>
+      </div>
+
+      <div class="social-buttons">
+        <a href="hhttps://www.facebook.com/profile.php?id=61576413437263" target="_blank" class="social fb">Facebook</a>
+        <a href="https://www.instagram.com/truhlarstvihrazdil/" target="_blank" class="social ig">Instagram</a>
+      </div>
+    </div>
+
+    <div class="kontakt-mapa">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.123456789!2d17.8717939!3d49.9191752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713d82dc7271929%3A0x3bb29ec05153c7e9!2sDomky%20374%2C%20747%2081%20Otice!5e0!3m2!1scs!2scz!4v1704560000000!5m2!1scs!2scz" 
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Zabrání automatickému scrollu na #sluzby při načtení s kotvou */
+  #sluzby:target {
+    scroll-margin-top: 100vh;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scroll pro všechny odkazy na ID
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Hamburger toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+
+    // Animace pro .sluzba-box
+    const boxes = document.querySelectorAll('.sluzba-box');
+    const boxObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 150);
+          boxObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    boxes.forEach(box => boxObserver.observe(box));
+
+    // Animace pro sekce #onas a #masiv
+    const sekce = document.querySelectorAll('#onas, #masiv, .onas-overlay, .masiv-overlay');
+    const sekceObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          sekceObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    sekce.forEach(el => sekceObserver.observe(el));
+  });
+
+  // Scroll na sekci podle URL parametru
+  window.addEventListener("load", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sekceParam = urlParams.get("sekce");
+
+    if (sekceParam === "sluzby" && performance.navigation.type !== 1) {
+      const target = document.getElementById("sluzby");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+  </script>
+</body>
+</html>
